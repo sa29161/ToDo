@@ -7,12 +7,12 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
+ 
 const routes: Routes = [
   {path:'',component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'welcome/:name', component: WelcomeComponent, canActivate:[RouteGaurdService]},
-  {path: 'todo', component: ListTodoComponent, canActivate:[RouteGaurdService] },
+  {path: 'todos', component: ListTodoComponent, canActivate:[RouteGaurdService] },
   {path: 'logout', component: LogoutComponent, canActivate:[RouteGaurdService]},
   {path:'**', component:ErrorComponent}
 ];
