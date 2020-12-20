@@ -24,4 +24,10 @@ export class WelcomeDataService {
     //console.log("Execute hello world service");
   }
 
+  createBasicAuthenticationHttpHeader(){
+    let username = 'user'
+    let password = 'password'
+    let basicAuthHeaderString = 'Basic' + window.btoa(username + ':' +password)
+  }
+
 }
