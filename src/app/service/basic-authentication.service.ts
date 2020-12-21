@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
+export const TOKEN = 'token';
+export const AUTHENTICATED_USER = 'authenticateuser';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,25 +14,16 @@ export class BasicAuthenticationService {
       private http: HttpClient
   ) { }
 
-  authenticate(username, password){
-    console.log('before '+this.isUserLoggedIn());
-    if(username==="dj" && password==="pass"){
-      sessionStorage.setItem('authenticateuser',username);
-      console.log('after '+this.isUserLoggedIn());
-      return true;
-    }else{
-      return false;
-    }
-    
-  }
+
 
   isUserLoggedIn(){
-    let user = sessionStorage.getItem('authenticateuser');
+    let user = sessionStorage.getItem(AUTHENTICATED_USER);
     return !(user === null);
   }
 
   logout(){
-    sessionStorage.removeItem('authenticateuser');
+    sessionStorage.removeItem(AUTHENTICATED_USER);
+    sessionStorage.removeItem(TOKEN);
   }
 
     
@@ -52,12 +46,22 @@ export class BasicAuthenticationService {
     ,{headers}).pipe(
         map(
             data=> {
-                sessionStorage.setItem('authenticateuser',username);
+                sessionStorage.setItem(AUTHENTICATED_USER,username);
+                sessionStorage.setItem(TOKEN,basicAuthHeaderString);
                 return data;
             }
         )
     );
     //console.log("Execute Hello World Bean Service")
+  }
+ getAuthenticatedUser(){
+   
+    return sessionStorage.getItem(AUTHENTICATED_USER)
+  }
+
+  getAuthenticatedToken(){
+    if(this.getAuthenticatedUser){
+    return sessionStorage.getItem(TOKEN)}
   }
 
 //   createBasicAuthenticationHttpHeader(){
