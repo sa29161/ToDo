@@ -33,21 +33,16 @@ export class BasicAuthenticationService {
 //     //console.log("Execute Hello World Bean Service")
 //   }
   
-  executeAuthenticationService(username, password){
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' +password)
-    //return basicAuthHeaderString;
-
-    let headers = new HttpHeaders({
-      Authorization: basicAuthHeaderString
-    })
-
+  executeJWTAuthenticationService(username, password){
     
-    return this.http.get<AuthenticationBean>('http://localhost:8080/basicauth'
-    ,{headers}).pipe(
+    return this.http.post<any>('http://localhost:8080/authenticate'
+   ,{
+     username,
+     password}).pipe(
         map(
             data=> {
                 sessionStorage.setItem(AUTHENTICATED_USER,username);
-                sessionStorage.setItem(TOKEN,basicAuthHeaderString);
+                sessionStorage.setItem(TOKEN,`Bearer ${data.token}`);
                 return data;
             }
         )

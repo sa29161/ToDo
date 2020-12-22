@@ -26,8 +26,8 @@ export class WelcomeDataService {
     //   Authorization: basicAuthHeaderString
     // })
 
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`,
-    //{headers}
+    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`
+    // {headers}
     );
     //console.log("Execute hello world service");
 
