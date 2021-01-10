@@ -13,21 +13,7 @@ export class ListTodoComponent implements OnInit {
   todos: Todo[]
 
   message:string
-  // = [
-
-    // new Todo(1, 'learn to dance',false, new Date()),
-    // new Todo(2, 'Become an Expert at Angular', false, new Date()),
-    // new Todo(3,'visit Norway',false,new Date())
-    // {id: 1, description: 'Learn to Dance'},
-    // {id: 2, description: 'Become an expert'},
-    // {id: 3, description: 'Visit NOrway'}
-  // ]
-
-  // todo = {
-  //   id: 1,
-  //   description: 'learn to code'
-  // }
-
+  
   constructor(
     private todoService: TodoDataService,
     private router : Router

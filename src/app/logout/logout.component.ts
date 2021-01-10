@@ -13,6 +13,7 @@ export class LogoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('username');
     this.hardcodedAuthenticationService.logout();
   }
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  errorOccured = "some error!!!"
+  errorOccured = "Page not found"
 
   constructor() { }
 

@@ -10,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  username= 'djrocks'
-  password='pass'
+  username= 'sahmed'
+  password='dummy'
 
   errorMessage = 'INVALID'
   invalidLogin = false
@@ -25,11 +25,8 @@ export class LoginComponent implements OnInit {
 
   onClick(){
     console.log(this.username);
-    // console.log(this.password);
-
-   // if(this.username==="dj" && this.password===""){
     if(this.HardcodedAuthenticationService.authenticate(this.username, this.password)){ 
-      //welcome
+      localStorage.setItem('username',this.username);
       this.router.navigate(['welcome',this.username])
       this.invalidLogin = false;
     } else{
